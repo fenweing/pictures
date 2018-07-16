@@ -41,5 +41,20 @@
 ##### Java中
 Java中采用的CAS:Atomic系列、concurrentHashmap、ConcurrentLinkedDeque等
 ### 流
+按操作数据单位分为字节流和字符流，前者继承InputStream/OutputStream抽象类，操作数据单位是字节，后者继承自Reader/Writer，操作数据单位是字符
+#### 缓冲流
+> 缓冲流要“套接”在相应的节点流之上，对读写的数据提供了缓冲的功能，提高了读写效率，同时增加了一些新的方法。
+> 
+> 字节缓冲流有BufferedInputStream/BufferedOutputStream，字符缓冲流有BufferedReader/BufferedWriter，字符缓冲流分别提供了读取和写入一行的方法ReadLine和NewLine方法。
+> 
+> 对于输出地缓冲流，写出的数据，会先写入到内存中，再使用flush方法将内存中的数据刷到硬盘。所以，在使用字符缓冲流的时候，一定要先flush，然后再close，避免数据丢失。
+#### 转换流
+> InputStreamReader/OutputStreamWriter。其中，InputStreamReader需要与InputStream“套接”，OutputStreamWriter需要与OutputStream“套接”。
 
+#### 数据流
+> 提供了读写Java中的基本数据类型的功能
+> DataInputStream和DataOutputStream分别继承自InputStream和OutputStream，需要“套接”在InputStream和OutputStream类型的节点流之上
+#### 对象流
+> 用于直接将对象写入写出。
+> ObjectInputStream和ObjectOutputStream,这两个流对操作的对象有要求，需要实现Serialized接口，声明可以被序列化，这里有个关键字transient，被其声明的> 字段在序列化时被忽略
 
